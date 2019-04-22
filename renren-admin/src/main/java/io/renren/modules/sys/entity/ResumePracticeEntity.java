@@ -12,7 +12,7 @@ import java.util.Date;
  * 
  * @author Mark
  * @email sunlightcs@gmail.com
- * @date 2019-04-22 17:01:42
+ * @date 2019-04-22 17:06:05
  */
 @Data
 @TableName("resume_practice")

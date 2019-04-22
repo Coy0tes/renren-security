@@ -3,7 +3,8 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://localhost:3306/renren_security?serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull&useUnicode=yes&characterEncoding=UTF-8
+#      url: jdbc:mysql://localhost:3306/renren_security?serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull&useUnicode=yes&characterEncoding=UTF-8
+      url: jdbc:mysql://106.12.14.238:3306/renren_security?serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull&useUnicode=yes&characterEncoding=UTF-8
       username: root
       password: root
       initial-size: 10

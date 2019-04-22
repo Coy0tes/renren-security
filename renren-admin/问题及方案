@@ -1,0 +1,37 @@
+START--------------------------》
+Caused by: com.mysql.jdbc.PacketTooBigException: Packet for query is too large (3227 > 1024). You can change this value on the server by setting the max_allowed_packet' variable.
+at com.mysql.jdbc.MysqlIO.send(MysqlIO.java:3178)
+at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:1917)
+at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2060)
+at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2536)
+at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2465)
+at com.mysql.jdbc.StatementImpl.executeQuery(StatementImpl.java:1383)
+at sun.reflect.GeneratedMethodAccessor34.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+at java.lang.reflect.Method.invoke(Method.java:597)
+at org.logicalcobwebs.proxool.ProxyStatement.invoke(ProxyStatement.java:100)
+at org.logicalcobwebs.proxool.ProxyStatement.intercept(ProxyStatement.java:57)
+at $java.sql.Statement
+原因： 查询出的数据包过大，默认情况下mysql 的字段容量不够装，所以抛出此异常
+
+解决办法：
+二、 方法2
+
+（很妥协，很纠结的办法）
+
+进入mysql server
+
+在mysql 命令行中运行
+
+set global max_allowed_packet = 2*1024*1024*10
+
+退出mysql命令行，然后重新登录。
+
+show VARIABLES like '%max_allowed_packet%';
+
+查看下max_allowed_packet是否编辑成功
+注：方法2中，如果重启mysql服务，max_allowed_packet的值会还原成默认的初始值，命令行里设定的值不会生效。
+
+如果实在是找不到my.cnf文件，可以只需要复制一个/usr/share/mysql目录下的.cnf文件到/etc目录，并改名为my.cnf即可。
+链接：https://blog.csdn.net/qq_37880968/article/details/82179026
+END----------------------------》
